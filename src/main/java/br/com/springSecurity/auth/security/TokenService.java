@@ -1,4 +1,4 @@
-package br.com.springSecurity.auth.configs;
+package br.com.springSecurity.auth.security;
 
 import br.com.springSecurity.auth.user.domains.User;
 import com.auth0.jwt.JWT;
@@ -22,9 +22,9 @@ public class TokenService {
         try{
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()
-                    .withIssuer("auth-api")
+                    .withIssuer("auth")
                     .withSubject(user.getLogin())
-                    .withExpiresAt(Date.from(genExpirationDate()))
+                    .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException exception) {
@@ -36,7 +36,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    .withIssuer("auth-api")
+                    .withIssuer("auth")
                     .build()
                     .verify(token)
                     .getSubject();

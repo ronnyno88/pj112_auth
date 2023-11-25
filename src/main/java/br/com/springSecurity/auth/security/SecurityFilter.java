@@ -1,7 +1,6 @@
 package br.com.springSecurity.auth.security;
 
 import br.com.springSecurity.auth.user.repositories.UserRepository;
-import br.com.springSecurity.auth.configs.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
